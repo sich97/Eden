@@ -1,1 +1,1 @@
-Eden
+Eden is a program that simulates organisms and evolution.
