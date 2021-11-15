@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Wall.tscn" type="PackedScene" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[node name="Environment" type="Spatial"]
+
+[node name="Plane" type="MeshInstance" parent="."]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Wall_west" parent="Plane" instance=ExtResource( 1 )]
+transform = Transform( 0.034012, 0, 0, 0, 1, 0, 0, 0, 1, -1.02904, 0.969358, 0 )
+
+[node name="Wall_east" parent="Plane" instance=ExtResource( 1 )]
+transform = Transform( 0.034, 0, 0, 0, 1, 0, 0, 0, 1, 1.03, 0.969, 0 )
+
+[node name="Wall_north" parent="Plane" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.034, 0, 0.969, -1.02212 )
+
+[node name="Wall_south" parent="Plane" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.034, 0, 0.969, 1.02567 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0 )
+current = true
+fov = 55.0

@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.149254, 0.532338, 0.99005 )
+colors = PoolColorArray( 0.101961, 1, 0, 1, 1, 0, 0, 1, 0.133236, 1, 0.0348259, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="VisualShaderNodeTexture" id=5]
+texture = SubResource( 4 )
+
+[sub_resource type="VisualShader" id=6]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Texture:2
+	vec4 tex_frg_2_read = texture(tex_frg_2, UV.xy);
+	vec3 n_out2p0 = tex_frg_2_read.rgb;
+	float n_out2p1 = tex_frg_2_read.a;
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -262.826, 125.517 )
+nodes/fragment/0/position = Vector2( 480, 140 )
+nodes/fragment/2/node = SubResource( 5 )
+nodes/fragment/2/position = Vector2( 200, 240 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+
+[node name="Bittern" type="Spatial"]
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 7 )

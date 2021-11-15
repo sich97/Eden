@@ -11,7 +11,14 @@ config_version=4
 [application]
 
 config/name="Eden"
+run/main_scene="res://Environments/Environment.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/height=1024
+window/size/resizable=false
+window/size/borderless=true
 
 [physics]
 
