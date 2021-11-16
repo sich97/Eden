@@ -14,6 +14,10 @@ config/name="Eden"
 run/main_scene="res://Environments/Environment.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/height=1024
